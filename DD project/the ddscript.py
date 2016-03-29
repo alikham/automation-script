@@ -38,7 +38,8 @@ def get_latest_dir(which_dir):
 
  ftp.dir(data.append)
 
- curent_date = time.strftime("%m-%d-%y") #Latest videos to be downloaded
+ curent_date = time.strftime("%m-%d-%y") #Latest videos to be downloaded you can also change the date manually to 01-28-2015 to 
+                                         #to download videos for a specific date
 
  directory_name = []
 
@@ -72,12 +73,14 @@ for i in range(len(s)):
 
  print filenames
 
- ftp.cwd('/'+s[i]+'/'+sub[i])#original
+ ftp.cwd('/'+s[i]+'/'+sub[i])
 
 
 
  for filename in filenames:
-    #Create a path and download all the videos on that path  
+    #Create a path and download all the videos on that path 
+    # below is the windows path to which the videos will be dowloaded you can change it to 
+    # whatever path you want
     pth = r'H:\oct18\\'
 
     if not os.path.exists(pth):
@@ -91,3 +94,5 @@ for i in range(len(s)):
     ftp.retrbinary('RETR '+ filename.rsplit('/',1)[1], file.write)
 
     file.close()
+
+ftp.quit()
